@@ -28,7 +28,7 @@ jobs:
     - name: Run basic tests
       run: |
         python -c "import copilot_linker.cli; print('Import successful')"
-        copilot-linker --help
+        gh-copilot-linker --help
 
   build:
     runs-on: ubuntu-latest
