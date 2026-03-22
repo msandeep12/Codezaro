@@ -91,3 +91,13 @@ This allows you to use the agents and skills from awesome-copilot in your reposi
 
 - On systems where symlinks are not supported or require special permissions, the utility will fall back to copying the directories.
 - The utility creates links/copies, so changes in the awesome-copilot repo will be reflected in your links (after updating with `git pull` in the cloned directory).
+
+## Contributing
+
+We use a pull request workflow with automated versioning and release management. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
+
+- How to create pull requests
+- Conventional commit message style
+- Automated versioning and release process
+
+All commits should follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.

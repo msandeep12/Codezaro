@@ -1,0 +1,18 @@
+name: Commit Lint
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: nodejs/setup-node@v4
+        with:
+          node-version: "18"
+      - run: npm install --save-dev @commitlint/config-conventional @commitlint/cli
+      - name: Validate commits
+        run: npx commitlint --from origin/main --to HEAD --verbose

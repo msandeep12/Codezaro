@@ -1,0 +1,34 @@
+{
+  "branches": ["main"],
+  "repositoryUrl": "https://github.com/msandeep12/Codezaro.git",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md", "pyproject.toml"],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "releasedLabels": false,
+        "successComment": false
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "echo 'Publishing version ${nextRelease.version}'"
+      }
+    ]
+  ]
+}
