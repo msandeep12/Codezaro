@@ -43,10 +43,18 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
       
+      - name: Check git history
+        run: |
+          echo "Last 5 commits:"
+          git log --oneline -5
+          echo ""
+          echo "Current branch:"
+          git branch -v
+      
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --ci
       
       - name: Verify tag creation
         run: |
