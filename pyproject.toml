@@ -28,7 +28,7 @@ Homepage = "https://github.com/msandeep12/gh-agent-sync"
 Repository = "https://github.com/msandeep12/gh-agent-sync"
 
 [project.scripts]
-gh-copilot-linker = "copilot_linker.cli:main"
+gh-copilot-linker = "gh_agent_sync.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

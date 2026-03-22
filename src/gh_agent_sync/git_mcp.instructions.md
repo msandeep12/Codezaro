@@ -5,7 +5,7 @@ description: "MCP server providing git operations for repository management"
 
 # Git MCP Server
 
-This is a Model Context Protocol (MCP) server that provides git operations for the copilot-linker utility.
+This is a Model Context Protocol (MCP) server that provides git operations for the gh-agent-sync utility.
 
 ## Available Tools
 
@@ -64,7 +64,7 @@ Push changes to remote repository.
 ## Usage in Code
 
 ```python
-from copilot_linker.git_mcp import GitMCPServer
+from gh_agent_sync.git_mcp import GitMCPServer
 
 # Check if in a git repo
 if GitMCPServer.is_git_repo():

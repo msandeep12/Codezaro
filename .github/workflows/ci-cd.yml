@@ -27,7 +27,7 @@ jobs:
         pip install -e .
     - name: Run basic tests
       run: |
-        python -c "import copilot_linker.cli; print('Import successful')"
+        python -c "import gh_agent_sync.cli; print('Import successful')"
         gh-copilot-linker --help
 
   build:
