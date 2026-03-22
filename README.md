@@ -19,7 +19,7 @@ pip install -e .
 From PyPI (once published):
 
 ```bash
-pip install gh-copilot-linker
+pip install gh-agent-sync
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ gh-copilot-linker link
 Or specify a custom repository:
 
 ```bash
-gh-copilot-linker link --url https://github.com/your-org/your-agents-repo
+gh-agent-sync link --url https://github.com/your-org/your-agents-repo
 ```
 
 This will:
@@ -46,7 +46,7 @@ This will:
 ### Undo Linking
 
 ```bash
-gh-copilot-linker undo
+gh-agent-sync undo
 ```
 
 This will:

@@ -1,6 +1,6 @@
-# Contributing to gh-copilot-linker
+# Contributing to gh-agent-sync
 
-Thank you for your interest in contributing to gh-copilot-linker! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to gh-agent-sync! This document provides guidelines and instructions for contributing.
 
 ## Workflow
 

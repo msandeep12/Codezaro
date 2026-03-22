@@ -28,7 +28,7 @@ jobs:
     - name: Run basic tests
       run: |
         python -c "import gh_agent_sync.cli; print('Import successful')"
-        gh-copilot-linker --help
+        gh-agent-sync --help
 
   build:
     runs-on: ubuntu-latest

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "gh-copilot-linker"
+name = "gh-agent-sync"
 version = "0.1.0"
 description = "Link agents and skills from awesome-copilot to your local repository. Supports MCP-based git operations."
 readme = "README.md"
@@ -28,7 +28,7 @@ Homepage = "https://github.com/msandeep12/gh-agent-sync"
 Repository = "https://github.com/msandeep12/gh-agent-sync"
 
 [project.scripts]
-gh-copilot-linker = "gh_agent_sync.cli:main"
+gh-agent-sync = "gh_agent_sync.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
