@@ -5,39 +5,35 @@ Copilot Linker - Link agents and skills from awesome-copilot to local .github/
 
 import os
 import sys
-import subprocess
 import shutil
 import argparse
 from pathlib import Path
-
-
-def run_command(cmd, cwd=None):
-    """Run a shell command and return True if successful."""
-    try:
-        result = subprocess.run(cmd, shell=True, cwd=cwd, check=True, capture_output=True, text=True)
-        return True
-    except subprocess.CalledProcessError as e:
-        print(f"Error running command: {cmd}")
-        print(f"Error output: {e.stderr}")
-        return False
+from .git_mcp import GitMCPServer
 
 
 def is_git_repo():
     """Check if current directory is a git repository."""
-    return run_command("git rev-parse --git-dir")
+    return GitMCPServer.is_git_repo()
 
 
 def clone_or_update_awesome_copilot(repo_url):
     """Clone or update the awesome-copilot repository."""
     awesome_dir = Path(".github/awesome-copilot")
-    repo_url = repo_url
 
     if awesome_dir.exists():
         print("Updating repository...")
-        return run_command("git pull", cwd=awesome_dir)
+        success, message = GitMCPServer.pull(str(awesome_dir))
+        if not success:
+            print(f"Error: {message}")
+        return success
     else:
         print("Cloning repository...")
-        return run_command(f"git clone {repo_url} {awesome_dir}")
+        success, message = GitMCPServer.clone(repo_url, str(awesome_dir))
+        if not success:
+            print(f"Error: {message}")
+        else:
+            print(message)
+        return success
 
 
 def create_link_or_copy(source, target):
