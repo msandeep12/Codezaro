@@ -94,24 +94,6 @@ This allows you to use the agents and skills from awesome-copilot in your reposi
 
 ## Architecture
 
-### MCP Integration
-
-This tool uses a **Model Context Protocol (MCP)** based git server for all git operations. This provides:
-
-- Type-safe git operations
-- Better error handling
-- Easier testing and mocking
-- Potential for distributed git operations
-- Integration with AI agents via MCP
-
-The `GitMCPServer` class in `src/gh_agent_sync/git_mcp.py` provides standardized interfaces for:
-- `is_git_repo()` - Check if in a git repository
-- `clone()` - Clone a repository
-- `pull()` - Pull updates
-- `add()` - Stage files
-- `commit()` - Commit changes
-- `push()` - Push to remote
-
 ## Contributing
 
 We use a pull request workflow with automated versioning and release management. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
