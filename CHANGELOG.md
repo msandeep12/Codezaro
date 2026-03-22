@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/msandeep12/gh-agent-sync/compare/v1.2.0...v1.2.1) (2026-03-22)
+
+
+### Bug Fixes
+
+* improve sed command for pyproject.toml version update ([43b4d7e](https://github.com/msandeep12/gh-agent-sync/commit/43b4d7e3d43a50f31bd74a22475562842dfd4d45))
+
 # [1.2.0](https://github.com/msandeep12/gh-agent-sync/compare/v1.1.0...v1.2.0) (2026-03-22)
 
 
