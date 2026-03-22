@@ -41,27 +41,62 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+      
+      - name: Verify tag creation
+        run: |
+          # Get the latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            echo "⚠️  No new release tag created (may be due to no commits triggering version bump)"
+          else
+            echo "✓ Release tag created: $LATEST_TAG"
+          fi
 
   publish:
     needs: release
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Fetch latest tags
+        run: git fetch --tags --force
+      
+      - name: Check for release tag
+        id: check_tag
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No release tag found. Skipping PyPI publish."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "Release tag found: $LATEST_TAG"
+            git checkout $LATEST_TAG
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          fi
       
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
+        if: steps.check_tag.outputs.skip == 'false'
       
       - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
           pip install build twine
+        if: steps.check_tag.outputs.skip == 'false'
       
       - name: Build package
         run: python -m build
+        if: steps.check_tag.outputs.skip == 'false'
       
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+        if: steps.check_tag.outputs.skip == 'false'
